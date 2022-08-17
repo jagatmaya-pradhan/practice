@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsTask1</title>
+</head>
+<style>
+    #formi {
+        /* text-align: center; */
+        background-color: lightgray;
+        margin-left: 450px;
+        margin-right: 450px;
+
+
+    }
+
+    .task {
+        padding-right: 500px;
+        height: 40px;
+        margin-left: 62px;
+
+    }
+
+    h1 {
+        font-size: 50px;
+        color: rgb(14, 85, 218);
+        text-align: center;
+        padding-top: 30px;
+    }
+
+    #submit {
+        color: white;
+        background-color: green;
+        width: 100px;
+        height: 40px;
+        margin-left: 350px;
+
+    }
+
+    .warn {
+        color: red;
+        font-weight: bold;
+        margin-left: 62px;
+
+    }
+</style>
+
+<body>
+    <form action="" onsubmit="return validation()" id="formi">
+        <h1>Form task1</h1><br>
+        <input type="text" placeholder="Enter Name" id="name" name="name" class="task"><br>
+        <span id="username" class="warn"></span>
+        <br>
+        <input type="text" placeholder="Enter email" class="task" id="email"><br>
+        <span id="emailId" class="warn"></span><br>
+        <input type="text" placeholder="password" class="task" id="pass"><br>
+        <span id="password" class="warn"></span><br>
+        <input type="text" placeholder="Confirm Password" class="task" id="cpass"><br>
+        <span id="conpassword" class="warn"></span><br>
+        <input type="number" placeholder="Enter Phone" class="task" id="phone"><br>
+        <span id="mobile" class="warn"></span><br>
+        <input type="submit" id="submit" value="submit"><br><br>
+    </form>
+    <script>
+        function validation() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let pass = document.getElementById("pass").value;
+            let cpass = document.getElementById("cpass").value;
+            let phone = document.getElementById("phone").value;
+            if (name == "") {
+                document.getElementById("username").innerHTML = "Please fill up the name!";
+                return false;
+            }
+            else{
+                document.getElementById("username").innerHTML = "";
+            }
+            if (email == "") {
+                document.getElementById("emailId").innerHTML = "Please fill up the email!";
+                return false;
+            }
+            if (email.indexOf('@') <= 0) {
+                document.getElementById("emailId").innerHTML = "@ not at right position";
+                return false;
+            }
+            
+            if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
+                document.getElementById("emailId").innerHTML = "invalid email";
+                return false;
+            }
+            else{
+                document.getElementById("emailId").innerHTML = "";
+            }
+            if (pass == "") {
+                document.getElementById("password").innerHTML = "Please fill up the password!";
+                return false;
+            }
+            if (pass.search(/[0-9]/)==-1) {
+                document.getElementById("password").innerHTML = "Password must cointain one numeric, lower and upper case value";
+                return false;
+            }
+            if (pass.search(/[a-z]/)==-1) {
+                document.getElementById("password").innerHTML = "Password must cointain one numeric, lower and upper case value";
+                return false;
+            }
+            if (pass.search(/[A-Z]/)==-1) {
+                document.getElementById("password").innerHTML = "Password must cointain one numeric, lower and upper case value";
+                return false;
+            }
+            if (pass.search(/[!\@\#\$\%\^\&\*\(\)\-\_\+\=]/)==-1) {
+                document.getElementById("password").innerHTML = "Password must cointain one numeric, lower and upper case value";
+                return false;
+            }
+            if ((pass.length <= 8) || (pass.length > 30)) {
+                document.getElementById("password").innerHTML = "Password must b more than 8 chars";
+                return false;
+            }
+            else{
+                document.getElementById("password").innerHTML = "";
+            }
+            if (cpass == "") {
+                document.getElementById("conpassword").innerHTML = "Retype the password!";
+                return false;
+            }
+            if (pass != cpass) {
+                document.getElementById("conpassword").innerHTML = "password and confirm password are not maching";
+                return false;
+
+            }
+            else{
+                document.getElementById("conpassword").innerHTML = "";
+            }
+            if (phone == "") {
+                document.getElementById("mobile").innerHTML = "Please fill up the mobile number!";
+                return false;
+            }
+            if ((phone.length != 10)) {
+                document.getElementById("mobile").innerHTML = "Phone number must b 10 digit";
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
